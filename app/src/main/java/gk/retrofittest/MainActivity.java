@@ -1,17 +1,15 @@
 package gk.retrofittest;
 
 import android.app.ProgressDialog;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import java.io.IOException;
 import java.util.List;
 
 import retrofit.Call;
@@ -19,7 +17,7 @@ import retrofit.Callback;
 import retrofit.Response;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
 
 
@@ -96,7 +94,6 @@ public class MainActivity extends ActionBarActivity {
                 case R.id.tombolambildatajakson :
 
                     munculProgress();
-//                    ambilDataRetroJakson();
                     ambilDataRetroJaksonConverter();
 
                     break;
@@ -110,16 +107,6 @@ public class MainActivity extends ActionBarActivity {
 
     private void ambilDataRetro() {
 
-//        Call<String> calls = RestsClientSingletons.getRestClients().getPostBaruLine("1");
-//        try {
-//            String strs = calls.execute().body();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
-//        Call call =
-
-//        Call<String> calls = RestsClientSingletons.getRestClients().getPostBaru("1", new Callback<String>() {
         Callback<String> callbackstr =  new Callback<String>() {
             @Override
             public void onResponse(Response<String> response) {
@@ -146,108 +133,6 @@ public class MainActivity extends ActionBarActivity {
         Call<String> calls = RestsClientSingletons.getRestClients().getPostBaruLine("1");
         calls.enqueue(callbackstr);
 
-//        try {
-//
-//            Call call2 = call.clone();
-//            call2.execute();
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-
-//        RestsClientSingletons.getRestClients().getPostBaru("1", new Callback<String>() {
-//            @Override
-//            public void success(String s, Response response) {
-//
-//                progressbar.dismiss();
-//
-//                respons = s;
-//                tekshasil.setText(respons);
-//
-//            }
-//
-//            @Override
-//            public void failure(RetrofitError error) {
-//
-//                error.printStackTrace();
-//
-//                progressbar.dismiss();
-//
-//                respons = error.getMessage();
-//                tekshasil.setText(respons);
-//            }
-//        });
-    }
-
-
-
-
-    private void ambilDataRetroJakson() {
-
-
-        Callback<ArrayBerita> callbackberita = new Callback<ArrayBerita>() {
-            @Override
-            public void onResponse(Response<ArrayBerita> response) {
-
-                progressbar.dismiss();
-
-                ArrayBerita arrberita = response.body();
-
-                List<Berita> arrberitalis = arrberita.getResult();
-
-                tekshasil.setText("Ukuran array " + arrberitalis.size());
-
-                Log.w("SUKSES", " SUKSES JACKSON JR");
-            }
-
-            @Override
-            public void onFailure(Throwable t) {
-
-                t.printStackTrace();
-
-                progressbar.dismiss();
-
-                tekshasil.setText(t.getMessage());
-            }
-        };
-
-
-        Call<ArrayBerita> callberita = RestsClientSingletons.getRestClient_JacksonBerita().getPostBaruJakson("1");
-        callberita.enqueue(callbackberita);
-//        Call<ArrayBerita> callberita = RestsClientSingletons.getRestClient_JacksonBerita().getPostBaruJakson("1", );
-//
-//        try {
-//            callberita.execute();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
-//
-//        RestsClientSingletons.getRestClient_JacksonBerita().getPostBaruJakson("1", new Callback<ArrayBerita>() {
-//            @Override
-//            public void success(ArrayBerita arrayBerita, Response response) {
-//
-//                progressbar.dismiss();
-//
-//                List<Berita> arrberita = arrayBerita.getResult();
-//
-//                tekshasil.setText("Ukuran array " + arrberita.size());
-//
-//                Log.w("SUKSES", " SUKSES JACKSON JR");
-//            }
-//
-//            @Override
-//            public void failure(RetrofitError error) {
-//
-//                error.printStackTrace();
-//
-//                progressbar.dismiss();
-//
-//                tekshasil.setText(error.getMessage());
-//
-//
-//            }
-//        });
     }
 
 

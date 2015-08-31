@@ -18,19 +18,11 @@ public interface Apis {
 
     //http://www.codepolitan.com/api/posts/latest/post/1
     @GET("/api/posts/latest/post/{page}")
-    Call<String> getPostBaru(@Path("page") String halaman, Callback<String> callback);
-
-
-    @GET("/api/posts/latest/post/{page}")
     Call<String> getPostBaruLine(@Path("page") String halaman);
 
 
 
     //http://www.codepolitan.com/api/posts/latest/post/1
-    @GET("/api/posts/latest/post/{page}")
-    Call<ArrayBerita> getPostBaruJakson(@Path("page") String halaman, Callback<ArrayBerita> callback);
-
-
     @GET("/api/posts/latest/post/{page}")
     Call<ArrayBerita> getPostBaruJakson(@Path("page") String halaman);
 
